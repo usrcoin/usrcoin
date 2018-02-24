@@ -1,2 +1,6 @@
 # usrcoin
-coin to support universal basic incomes
+--------
+universal basic incomes
+
+--------
+- Original [README](./README-orig.md)
