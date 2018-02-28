@@ -33,23 +33,23 @@ const uint8_t  ZAWY_DIFFICULTY_DIFFICULTY_BLOCK_VERSION      = 0;
 const size_t   CRYPTONOTE_REWARD_BLOCKS_WINDOW               = 100;
 const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE     = 100000; // size of block (bytes) after which reward for block calculated using block size
 const size_t   CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE        = 600;
-const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT              = 9;
+const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT              = 10; // 1,844,674,407 total coins
 
 // COIN - number of smallest units in one coin
-const uint64_t POINT                                         = UINT64_C(1000000); // pow(10, 6)
-const uint64_t COIN                                          = UINT64_C(1000000000); // pow(10, 9)
-const uint64_t MINIMUM_FEE                                   = UINT64_C(10000000); // pow(10, 7)
-const uint64_t DEFAULT_DUST_THRESHOLD                        = UINT64_C(10000000); // pow(10, 7)
+const uint64_t POINT                                         = UINT64_C(100000000); // pow(10, 8)
+const uint64_t COIN                                          = UINT64_C(10000000000); // pow(10, 10)
+const uint64_t MINIMUM_FEE                                   = UINT64_C(100000); // pow(10, 6)
+const uint64_t DEFAULT_DUST_THRESHOLD                        = UINT64_C(100000); // pow(10, 6)
 
-const uint64_t DIFFICULTY_TARGET                             = 60; // seconds
+const uint64_t DIFFICULTY_TARGET                             = 30; // seconds
 const uint64_t EXPECTED_NUMBER_OF_BLOCKS_PER_DAY             = 24 * 60 * 60 / DIFFICULTY_TARGET;
 const size_t   DIFFICULTY_WINDOW                             = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY; // blocks
 const size_t   DIFFICULTY_WINDOW_V1                          = DIFFICULTY_WINDOW;
 const size_t   DIFFICULTY_WINDOW_V2                          = DIFFICULTY_WINDOW;
-const size_t   DIFFICULTY_CUT                                = 60; // timestamps to cut after sorting -- change to 0 after build -- ALEX
+const size_t   DIFFICULTY_CUT                                = 60; // timestamps to cut after sorting -- change 60 to 0 after build -- ALEX
 const size_t   DIFFICULTY_CUT_V1                             = DIFFICULTY_CUT;
 const size_t   DIFFICULTY_CUT_V2                             = DIFFICULTY_CUT;
-const size_t   DIFFICULTY_LAG                                = 15; // !!! -- change to 0 after build -- ALEX
+const size_t   DIFFICULTY_LAG                                = 15; // !!! -- change 15 to 0 after build -- ALEX
 const size_t   DIFFICULTY_LAG_V1                             = DIFFICULTY_LAG;
 const size_t   DIFFICULTY_LAG_V2                             = DIFFICULTY_LAG;
 static_assert(2 * DIFFICULTY_CUT <= DIFFICULTY_WINDOW - 2, "Bad DIFFICULTY_WINDOW or DIFFICULTY_CUT");
@@ -101,7 +101,7 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 } // parameters
 
 const uint64_t START_BLOCK_REWARD                            = (UINT64_C(100) * parameters::POINT);
-const uint64_t ICO_BLOCK_REWARD	                             = (UINT64_C(18446744073) * parameters::COIN); // 18.4 billion ICO
+const uint64_t ICO_BLOCK_REWARD	                             = (UINT64_C(830103483) * parameters::COIN); // 1,844,674,407 * 45% = 830,103,483 ICO
 const uint64_t MAX_BLOCK_REWARD                              = (UINT64_C(10) * parameters::COIN);
 const uint64_t REWARD_INCREASE_INTERVAL                      = (UINT64_C(264000));
 
@@ -142,6 +142,8 @@ const char     P2P_STAT_TRUSTED_PUB_KEY[]                    = "0000000000000000
 const std::initializer_list<const char*> SEED_NODES = {
   "104.197.18.77:18080",
   "52.233.193.145:18080",
+  "35.195.80.161:18080",
+  "35.227.153.92:18080",
 };
 
 struct CheckpointData {
@@ -156,6 +158,7 @@ __attribute__((unused))
 // You may add here other checkpoints using the following format:
 // {<block height>, "<block hash>"},
 const std::initializer_list<CheckpointData> CHECKPOINTS = {
+  { 1, "4398b4fa1b71483cfba0e1998d9789b08a4c49726fdc495e71726911bf3ce46f" },
 };
 
 } // CryptoNote
